@@ -1,0 +1,36 @@
+{
+    "siteName": "Taj Mahal",
+    "siteDescription": "The Taj Mahal is a stunning ivory-white marble mausoleum in Agra, India, built by Mughal Emperor Shah Jahan for his beloved wife, Mumtaz Mahal.",
+    "features": [
+        {
+            "featureName": "The Onion Dome",
+            "featureDesc": "The Taj Mahal's central onion dome reaches 73 meters in height and uses an innovative 'double-dome' system. It is topped with a gilded finial that combines Persian and Hindu motifs, symbolizing the vault of heaven.",
+            "featurePos": { "x": 0.0, "y": 0.0, "z": 0.0 },
+            "triggerVisibilityDist": 1.0
+        },
+        {
+            "featureName": "Minaret 1",
+            "featureDesc": "Minaret 1 of the Taj Mahal, built with an intentional slight outward tilt to protect the main tomb in an earthquake. These structurally and aesthetically significant towers serve to frame the main building and symbolize ladders to the sky.",
+            "featurePos": { "x": -0.2964, "y": 0.0, "z": -0.2949 },
+            "triggerVisibilityDist": 1.5
+        },
+        {
+            "featureName": "Minaret 2",
+            "featureDesc": "Minaret 2 of the Taj Mahal, built with an intentional slight outward tilt to protect the main tomb in an earthquake. These structurally and aesthetically significant towers serve to frame the main building and symbolize ladders to the sky.",
+            "featurePos": { "x": 0.296, "y": 0.0, "z": -0.296 },
+            "triggerVisibilityDist": 1.5
+        },
+        {
+            "featureName": "Minaret 3",
+            "featureDesc": "Minaret 3 of the Taj Mahal, built with an intentional slight outward tilt to protect the main tomb in an earthquake. These structurally and aesthetically significant towers serve to frame the main building and symbolize ladders to the sky.",
+            "featurePos": { "x": -0.293, "y": 0.0, "z": 0.296 },
+            "triggerVisibilityDist": 1.5
+        },
+        {
+            "featureName": "Minaret 4",
+            "featureDesc": "Minaret 4 of the Taj Mahal, built with an intentional slight outward tilt to protect the main tomb in an earthquake. These structurally and aesthetically significant towers serve to frame the main building and symbolize ladders to the sky.",
+            "featurePos": { "x": 0.3, "y": 0.0, "z": 0.297 },
+            "triggerVisibilityDist": 1.5
+        }
+    ]
+}

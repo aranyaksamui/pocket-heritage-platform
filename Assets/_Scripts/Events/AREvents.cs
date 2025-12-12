@@ -12,9 +12,7 @@ public static class AREvents
     public static System.Action<GameObject> OnObjectPlaced;
 
     // Interaction phase events
-    public static System.Action OnObjectZoomRequested;
-    public static System.Action OnObjectRotationRequested;
-
+    public static System.Action<FeatureData> OnFeatureClicked;
 
     // Navigation phase events
 
