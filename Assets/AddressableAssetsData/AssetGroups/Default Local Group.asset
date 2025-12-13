@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: Default Local Group
   m_GUID: cca61a439d4fce047b17fda8173905c9
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 20691b7aa9e02f14bb1d16c2627d80ac
+    m_Address: site_model_tajmahal
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 272788759e6cba7499f2a651a0cff8c3, type: 2}
   m_SchemaSet:
