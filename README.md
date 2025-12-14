@@ -17,7 +17,7 @@ This project follows a **Event-Driven Architecture** and utilizes **Data-Driven 
 *   **Client:** Unity (C#)
 *   **AR System:** AR Foundation (ARCore/ARKit)
 *   **Data Management:** JSON-based metadata loading (Milestone 1 completed).
-*   **Asset Pipeline:** Unity Addressables for asynchronous asset loading (Milestone 2 in progress).
+*   **Asset Pipeline:** Unity Addressables for asynchronous asset loading (Milestone 2 completed).
 *   **Pattern:** Centralized Event Bus (`AREvents`) decoupling Logic, UI, and Data layers.
 
 ## 🚀 Getting Started
@@ -47,7 +47,7 @@ This project follows a **Event-Driven Architecture** and utilizes **Data-Driven 
 
 - [x] **Milestone 0:** Project Setup & Git LFS Integration.
 - [x] **Milestone 1:** Dynamic Data Injection (JSON) & Smart Label System.
-- [ ] **Milestone 2:** Asset Pipeline Optimization (Addressables).
+- [x] **Milestone 2:** Asset Pipeline Optimization (Addressables).
 - [ ] **Milestone 3:** Cloud Backend Integration (Firebase).
 - [ ] **Milestone 4:** Full User Interface & Navigation.
 
