@@ -3,22 +3,20 @@ using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using System.Collections.Generic;
 
-/*
- * Summary:
- *      This class handles the heritage objects.
- *      It has helper functions for the heritage objects like placement in the AR world.
-*/
+/// <summary>
+///     Provides helper functions for the heritage object.
+///     For example: Method to place the heritage model object.
+/// </summary>
 public class WorldObjectsManager : MonoBehaviour
 {
-    [Tooltip("The heritage object to be placed and viewed in AR")]
-    [SerializeField] GameObject heritageObjectPrefab;
+    [Tooltip("AR asset manager that loads the assets using Unity addressables")]
+    [SerializeField] ARAssetLoader assetLoader;
 
     private ARRaycastManager raycastManager;
-    private GameObject spawnedObject = null;
-    //private Vector2 touchPosition;
     private List<ARRaycastHit> hits = new List<ARRaycastHit>();
 
     private Vector2 screenCenter;
+    private bool isObjectSpawned = false;
 
 
     private void Awake()
@@ -44,18 +42,20 @@ public class WorldObjectsManager : MonoBehaviour
         screenCenter = new Vector2(Screen.width / 2f, Screen.height / 2f);
     }
 
-    // Place a heritage site object into the AR world
+    /// <summary>
+    ///     Place a heritage site object into the AR world. Fires when user clicks the "Place" button.
+    /// </summary>
     private void PlaceObject()
     {
         if (raycastManager.Raycast(screenCenter, hits, TrackableType.PlaneWithinPolygon))
         {
             Pose hitPose = hits[0].pose;
-            if (spawnedObject == null && heritageObjectPrefab != null)
+            if (!isObjectSpawned)
             {
-                spawnedObject = Instantiate(heritageObjectPrefab, hitPose.position, hitPose.rotation);
-                if (spawnedObject != null) AREvents.OnObjectPlaced?.Invoke(spawnedObject);
+                assetLoader.LoadAndPlaceAsset(hitPose.position, hitPose.rotation);
+                isObjectSpawned = true;
             }
-            else Debug.LogError("[WorldObjectsManager/PlaceObject()] Hertiage object prefab is null or spawnedObject is not null");
+            else Debug.LogError("[WorldObjectsManager/PlaceObject()] Model object already spawned");
         }
         else Debug.LogError("[WorldObjectsManager/PlaceObject()] Placement Failed! Point you camera to a flat detected surface");
     }

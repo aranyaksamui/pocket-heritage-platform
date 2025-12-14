@@ -1,13 +1,13 @@
 using TMPro;
 using UnityEngine;
 
-/* 
- * Summary:
- *      This class manages the Smart Labels feature.
- *      Smart labels anchor/points to each of the distinct features of the heritage site (3D Model).
- *      It gives the user with description and back stories of the feature it is pointing to.
- *      For example a antique fountain in the heritage site.
-*/
+
+/// <summary>
+///     This class manages the Smart Labels feature.
+///     Smart labels anchor/points to each of the distinct features of the heritage site (3D Model).
+///     It gives the user with description and back stories of the feature it is pointing to.
+///     For example a antique fountain in the heritage site.
+/// </summary>
 public class ARSmartLabel : MonoBehaviour
 {
     [Header("Settings")]
@@ -31,7 +31,6 @@ public class ARSmartLabel : MonoBehaviour
     [SerializeField] TMP_Text featureName;
     [Tooltip("Feature description")]
     [SerializeField] TMP_Text featureDescription;
-
 
     private Transform camTransform;
     private FeatureData featureData;
@@ -58,7 +57,11 @@ public class ARSmartLabel : MonoBehaviour
         HandleLabelVisibility();
     }
 
-    // Initialize the smart label with the site feature data and set the position of the label
+    /// <summary>
+    ///     Initialize the smart label with the site feature data and set the position of the label
+    /// </summary>
+    /// <param name="siteFeatureData">The data of the sites feature.</param>
+    /// <param name="labelPosition">The position of the smart label</param>
     public void InitilizeSmartLabel(FeatureData siteFeatureData, Vector3 labelPosition)
     {
         featureData = siteFeatureData;
@@ -74,7 +77,9 @@ public class ARSmartLabel : MonoBehaviour
         transform.localPosition = labelPosition;
     }
 
-    // Handle the feature label's visibility based on distance from feature to camera
+    /// <summary>
+    ///     Handle the feature label's visibility based on distance of the feature to camera.
+    /// </summary>
     void HandleLabelVisibility()
     {
         if (camTransform == null) return;
@@ -93,7 +98,9 @@ public class ARSmartLabel : MonoBehaviour
         }
     }
 
-    // Update the label's visuals like billboarding and the label pointer line
+    /// <summary>
+    ///     Update the label's visuals like billboarding and the label pointer line.
+    /// </summary>
     void UpdateLabelVisuals()
     {
         // Label billboarding

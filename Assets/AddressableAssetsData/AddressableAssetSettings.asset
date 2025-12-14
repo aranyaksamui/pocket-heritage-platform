@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 468a46d0ae32c3544b7d98094e6448a9, type: 3}
   m_Name: AddressableAssetSettings
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetSettings
-  m_DefaultGroup: cca61a439d4fce047b17fda8173905c9
+  m_DefaultGroup: 1e972335065fe034dbc4c2fe3dc06cc2
   m_currentHash:
     serializedVersion: 2
-    Hash: 7a8e27f764b825414e9ea94740359c8d
+    Hash: 47e18e5514320c28a7d8995bd36e4f01
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_CatalogRequestsTimeout: 0
@@ -24,11 +24,11 @@ MonoBehaviour:
   m_InternalBundleIdMode: 1
   m_AssetLoadMode: 0
   m_BundledAssetProviderType:
-    m_AssemblyName: Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-    m_ClassName: UnityEngine.ResourceManagement.ResourceProviders.BundledAssetProvider
+    m_AssemblyName: 
+    m_ClassName: 
   m_AssetBundleProviderType:
-    m_AssemblyName: Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-    m_ClassName: UnityEngine.ResourceManagement.ResourceProviders.AssetBundleProvider
+    m_AssemblyName: 
+    m_ClassName: 
   m_IgnoreUnsupportedFilesInBuild: 0
   m_UniqueBundleIds: 0
   m_EnableJsonCatalog: 0
@@ -51,9 +51,9 @@ MonoBehaviour:
   m_CheckForContentUpdateRestrictionsOption: 0
   m_MonoScriptBundleCustomNaming: 
   m_RemoteCatalogBuildPath:
-    m_Id: 
+    m_Id: 4a37e3750b963f940a78032162b9bdbd
   m_RemoteCatalogLoadPath:
-    m_Id: 
+    m_Id: 9c1a41fb1f5080144bd1feba2d3fa41c
   m_ContentStateBuildPathProfileVariableName: <default settings path>
   m_CustomContentStateBuildPath: 
   m_ContentStateBuildPath: 
@@ -67,34 +67,34 @@ MonoBehaviour:
   m_ProfileSettings:
     m_Profiles:
     - m_InheritedParent: 
-      m_Id: cacd968344132f140b065e9c5c1c26f6
+      m_Id: 4fb9f19c53bd6a849824aa2d9bf20046
       m_ProfileName: Default
       m_Values:
-      - m_Id: 3a003893291c50c4b812587da5badae5
+      - m_Id: 4a37e3750b963f940a78032162b9bdbd
         m_Value: 'ServerData/[BuildTarget]'
-      - m_Id: 9914f9d7c7b85ab459dabc35189f7c23
-        m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget]'
-      - m_Id: b75d1445e1ad20641a391821d603d292
-        m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
-      - m_Id: be9a03c30f88e07408c5a3fb885b5d06
+      - m_Id: 58b827de6977e9d4791877086dfc3f0c
         m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]/[BuildTarget]'
-      - m_Id: d5b2b38596799e248a66eac3fe1eea98
+      - m_Id: 9c1a41fb1f5080144bd1feba2d3fa41c
         m_Value: <undefined>
+      - m_Id: b89fff31b8a130649b4b9015b32bffaa
+        m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget]'
+      - m_Id: c8595ac8b7ba1614bb93e7acf426f8e1
+        m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
     m_ProfileEntryNames:
-    - m_Id: 3a003893291c50c4b812587da5badae5
+    - m_Id: 4a37e3750b963f940a78032162b9bdbd
       m_Name: Remote.BuildPath
       m_InlineUsage: 0
-    - m_Id: 9914f9d7c7b85ab459dabc35189f7c23
-      m_Name: BuildTarget
-      m_InlineUsage: 0
-    - m_Id: b75d1445e1ad20641a391821d603d292
-      m_Name: Local.LoadPath
-      m_InlineUsage: 0
-    - m_Id: be9a03c30f88e07408c5a3fb885b5d06
+    - m_Id: 58b827de6977e9d4791877086dfc3f0c
       m_Name: Local.BuildPath
       m_InlineUsage: 0
-    - m_Id: d5b2b38596799e248a66eac3fe1eea98
+    - m_Id: 9c1a41fb1f5080144bd1feba2d3fa41c
       m_Name: Remote.LoadPath
+      m_InlineUsage: 0
+    - m_Id: b89fff31b8a130649b4b9015b32bffaa
+      m_Name: BuildTarget
+      m_InlineUsage: 0
+    - m_Id: c8595ac8b7ba1614bb93e7acf426f8e1
+      m_Name: Local.LoadPath
       m_InlineUsage: 0
     m_ProfileVersion: 1
   m_LabelTable:
@@ -112,4 +112,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 70739bb3a471b9c44bfba63c19c5ffdc, type: 2}
   - {fileID: 11400000, guid: 393f66b472393ff4388cfc1dd45c817f, type: 2}
   - {fileID: 11400000, guid: 9682f7c3d8016f34b82151118bbc5932, type: 2}
-  m_ActiveProfileId: cacd968344132f140b065e9c5c1c26f6
+  m_ActiveProfileId: 4fb9f19c53bd6a849824aa2d9bf20046

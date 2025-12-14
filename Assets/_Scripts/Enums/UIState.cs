@@ -9,4 +9,5 @@ public enum UIState
     Interaction,
     Navigation,
     Info,
+    Loading,
 }

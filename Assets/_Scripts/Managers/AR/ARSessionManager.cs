@@ -46,7 +46,7 @@ public class ARSessionManager : MonoBehaviour
             Debug.Log("[ARSessionManager/OnTrackablesChanged()] First planes detected!");
             arePlanesDetected = true;
             // Update the placenment hints in placement UI if planes are detected
-            AREvents.OnPlanesDetectionChanged(arePlanesDetected);
+            AREvents.OnPlanesDetectionChanged.Invoke(arePlanesDetected);
         }
     }
 }

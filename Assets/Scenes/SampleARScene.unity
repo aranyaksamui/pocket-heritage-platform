@@ -543,6 +543,7 @@ MonoBehaviour:
   interactionCanvas: {fileID: 272018974}
   navigationCanvas: {fileID: 0}
   infoCanvas: {fileID: 0}
+  loadingCanvas: {fileID: 1385584473157508395, guid: 3f0e5b79816c0744298b751958712627, type: 3}
 --- !u!1 &1172188506
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,6 +634,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SiteDataManager
   siteDataJsonFile: site_data
   smartLabelPrefab: {fileID: 989353569407344240, guid: 8f1a4599de718c44294d0a0ea4772027, type: 3}
+--- !u!1 &1555800878
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1555800879}
+  - component: {fileID: 1555800880}
+  m_Layer: 0
+  m_Name: ARAssetManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1555800879
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555800878}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 175.53856, y: 0.29067, z: 5758.774}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1555800880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555800878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c181cb5bb0b0c4e48a27a5cb9640034f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ARAssetLoader
+  assetAddress: site_model_tajmahal
 --- !u!1001 &1372699895554782332
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -885,6 +931,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3110939614924496098, guid: 5598abf5490ef6a44a487eb3f934ee7a, type: 3}
+      propertyPath: assetLoader
+      value: 
+      objectReference: {fileID: 1555800880}
+    - target: {fileID: 3110939614924496098, guid: 5598abf5490ef6a44a487eb3f934ee7a, type: 3}
       propertyPath: heritageObjectPrefab
       value: 
       objectReference: {fileID: 1602072934396226052, guid: 20691b7aa9e02f14bb1d16c2627d80ac, type: 3}
@@ -900,7 +950,8 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 5493660217756098718}
-  - {fileID: 204203784}
-  - {fileID: 1170746309}
   - {fileID: 1172188507}
   - {fileID: 1292185410}
+  - {fileID: 1555800879}
+  - {fileID: 204203784}
+  - {fileID: 1170746309}

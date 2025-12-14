@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 
 
-/*
- * Summary:
- *      The primary site data with keys: "siteName", "siteDescription" and "features".
- *      Stores all the historical data about a heritage site.
-*/
+/// <summary>
+///     Summary:
+///     The primary site data with keys: "siteName", "siteDescription" and "features".
+///     Stores all the historical data about a heritage site. 
+/// </summary>
 [Serializable]
 public class SiteData
 {
@@ -15,12 +15,11 @@ public class SiteData
     public List<FeatureData> features;
 }
 
-/*
- * Summary:
- *      The feature data with keys: "featureTitle", "featureDesc" and "featurePos".
- *      Stores the title, description and the position (relative to the parent gameobject) of a disctinct feature in the heritage site.
- *      One heritage site can have multiple features. For example: A fountain and a gate.
-*/
+/// <summary>
+///     The feature data with keys: "featureTitle", "featureDesc" and "featurePos".
+///     Stores the title, description and the position (relative to the parent gameobject) of a disctinct feature in the heritage site.
+///     One heritage site can have multiple features. For example: A fountain and a gate.
+/// </summary>
 [Serializable]
 public class FeatureData
 {
@@ -30,11 +29,10 @@ public class FeatureData
     public float triggerVisibilityDist;
 }
 
-/*
- * Summary:
- *      Stores positions of each of the disctinct features in the heritage site model relative to the parent gameobject".
- *      With keys: x, y and z.
-*/
+/// <summary>
+///     Stores positions of each of the disctinct features in the heritage site model relative to the parent gameobject".
+///     With keys: x, y and z.
+/// </summary>
 [Serializable]
 public class PositionData
 {

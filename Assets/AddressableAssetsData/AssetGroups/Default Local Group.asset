@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Default Local Group
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: Default Local Group
-  m_GUID: cca61a439d4fce047b17fda8173905c9
+  m_GUID: 1e972335065fe034dbc4c2fe3dc06cc2
   m_SerializeEntries:
   - m_GUID: 20691b7aa9e02f14bb1d16c2627d80ac
     m_Address: site_model_tajmahal

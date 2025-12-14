@@ -1,10 +1,9 @@
 using UnityEngine;
 
 
-/*
- * Summary:
- *      This manager class loads the site data from the site_data.json (heritage site data for labels) after the heritate site object has been placed.
-*/
+/// <summary>
+///     This manager class loads the site data from the site_data.json (heritage site data for labels) after the heritate site object has been placed.
+/// </summary>
 public class SiteDataManager : MonoBehaviour
 {
     [Header("Settings")]
@@ -12,7 +11,6 @@ public class SiteDataManager : MonoBehaviour
     [SerializeField] string siteDataJsonFile = "site_data";
     [Tooltip("The smart label prefab pointing to the specific heritage feature")]
     [SerializeField] GameObject smartLabelPrefab;
-
 
     private void OnEnable()
     {
@@ -24,7 +22,9 @@ public class SiteDataManager : MonoBehaviour
         AREvents.OnObjectPlaced -= HandleObjectPlaced;
     }
 
-    // Load site data on object placed
+    /// <summary>
+    ///     Load site data on object placed.
+    /// </summary>
     private void HandleObjectPlaced(GameObject siteObject)
     {
         Debug.Log($"[SiteDataManager/HandleObjectPlaced()] Object placed. Generating labels...");
@@ -42,7 +42,9 @@ public class SiteDataManager : MonoBehaviour
         LoadSiteData(featuresContainer);
     }
 
-    // Load the specific site data from its json file
+    /// <summary>
+    ///     Load the specific site data from its json file.
+    /// </summary>
     private void LoadSiteData(Transform parentObject)
     {
         // Find the file
@@ -56,7 +58,11 @@ public class SiteDataManager : MonoBehaviour
         }
     }
 
-    // Spawn the feature in it's respective position inside the parent object
+    /// <summary>
+    ///     Spawn the feature in it's respective position inside the parent object.
+    /// </summary>
+    /// <param name="feature">Data of the feature</param>
+    /// <param name="parent">Transform of the parent object</param>
     private void SpawnFeatureLabel(FeatureData feature, Transform parent)
     {
         // Instantiate the smart label in the scene
