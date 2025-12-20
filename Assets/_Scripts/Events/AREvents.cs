@@ -29,6 +29,10 @@ public static class AREvents
     ///     This raises an event when the user clicks a feature label icon.
     /// </summary>
     public static System.Action<FeatureData> OnFeatureClicked; //TODO: Implement feature label icon click
+    /// <summary>
+    ///     This raises an event when the feature data is present and the feature labels are successfully spawned in the AR world.
+    /// </summary>
+    public static System.Action OnFeatureLabelsSpawned;
 
     // Navigation phase events
 
@@ -44,5 +48,5 @@ public static class AREvents
     /// <summary>
     ///     This raises an event when the asset gets loaded.
     /// </summary>
-    public static System.Action OnAssetLoadingStarted;
+    public static System.Action<bool, string> OnLoadingStatusChanged;
 }

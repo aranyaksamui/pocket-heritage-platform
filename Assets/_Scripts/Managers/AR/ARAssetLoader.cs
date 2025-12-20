@@ -22,7 +22,7 @@ public class ARAssetLoader : MonoBehaviour
     public void LoadAndPlaceAsset(Vector3 position, Quaternion rotation)
     {
         // Invoke the loading screen
-        AREvents.OnAssetLoadingStarted.Invoke();
+        AREvents.OnLoadingStatusChanged.Invoke(true, "Loading asset...");
         Debug.Log($"[ARAssetLoad/LoadAndPlaceAsset()] Loading asset: {assetAddress}");
         // Load the model using the asset's adderss and instantiate it
         Addressables.InstantiateAsync(assetAddress, position, rotation).Completed += OnAssetLoaded;

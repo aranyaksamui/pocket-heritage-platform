@@ -1,10 +1,5 @@
-using NUnit.Framework;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.UIElements;
-using static UnityEngine.Rendering.DebugUI.Table;
 
 /// <summary>
 ///     This manager class handles the UI change and updatation based on user interaction with the UI.
@@ -52,17 +47,20 @@ public class UIStateManager : MonoBehaviour
     private void OnEnable()
     {
         AREvents.OnObjectPlaced += HandleObjectPlaced;
-        AREvents.OnAssetLoadingStarted += HandleAssetLoading;
+        AREvents.OnLoadingStatusChanged += HandleLoadingStatus;
+        AREvents.OnFeatureLabelsSpawned += HandleFeatureLabelSpawned;
     }
 
     private void OnDisable()
     {
         AREvents.OnObjectPlaced -= HandleObjectPlaced;
-        AREvents.OnAssetLoadingStarted -= HandleAssetLoading;
+        AREvents.OnLoadingStatusChanged -= HandleLoadingStatus;
+        AREvents.OnFeatureLabelsSpawned -= HandleFeatureLabelSpawned;
     }
 
-
-    // Initialize all the canvases
+    /// <summary>
+    ///     Initializes all the app canvases.
+    /// </summary>
     private void InitializeCanvases()
     {
         if (placementCanvas == null || interactionCanvas == null) return;
@@ -107,15 +105,32 @@ public class UIStateManager : MonoBehaviour
     }
 
     // State change methods
-    // Call this event handler on object placed
+    /// <summary>
+    ///     Change UI state on object placed.
+    /// </summary>
     private void HandleObjectPlaced(GameObject placedObject)
     {
         ChangeState(UIState.Interaction);
     }
-    
-    // Call this event handler when loading asset after "Place" button clicked
-    private void HandleAssetLoading()
+
+    /// <summary>
+    ///     Call this event handler when loading state is invoked.
+    /// </summary>
+    /// <param name="status">If true set the loading message.</param>
+    /// <param name="message">The loading message.</param>
+    private void HandleLoadingStatus(bool status, string message)
     {
-        ChangeState(UIState.Loading);
+        if (status)
+        {
+            loadingCanvas.gameObject.GetComponent<LoadingUI>().SetLoadingMessage(message);
+            ChangeState(UIState.Loading);
+        }
+    }
+    /// <summary>
+    ///     Call this event handler when feature labels are successfully spawned.
+    /// </summary>
+    private void HandleFeatureLabelSpawned()
+    {
+        ChangeState(UIState.Interaction);
     }
 }

@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 1385584473157508395}
   - component: {fileID: 2434761850109342822}
   - component: {fileID: 8295701024218594219}
-  - component: {fileID: 8558926458324857726}
+  - component: {fileID: 1404148574144465831}
   m_Layer: 0
   m_Name: Loading  UI Canvas
   m_TagString: Untagged
@@ -316,7 +316,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &8558926458324857726
+--- !u!114 &1404148574144465831
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -325,9 +325,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7936639611837469362}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e0f300378f2ce44b9a388c97f53c778, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d2c35c34c6475541886a5b369f5f0e3, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  placementText: {fileID: 0}
-  placeButton: {fileID: 0}
-  crosshairImage: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::LoadingUI
+  loadingMessage: {fileID: 5446550398373725819}
