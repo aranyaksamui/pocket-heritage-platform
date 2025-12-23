@@ -1,7 +1,7 @@
 # 🏛️ Pocket Heritage AR Platform (WIP)
 
 > **Status:** 🚧 In Development (Prototyping Phase)  
-> **Tech Stack:** Unity 2022+, AR Foundation, Addressables, Firebase (Planned)
+> **Tech Stack:** Unity 2022+, AR Foundation, Addressables, Firebase Firestore + Netlify
 
 ## 📖 Overview
 Pocket Heritage is an Augmented Reality (AR) platform designed to preserve and visualize India's cultural heritage. The application allows users to place high-fidelity 3D models of heritage sites (like the *Rani Ki Vav* stepwell and the *Taj Mahal*) into the real world.
@@ -16,8 +16,8 @@ This project follows a **Event-Driven Architecture** and utilizes **Data-Driven 
 
 *   **Client:** Unity (C#)
 *   **AR System:** AR Foundation (ARCore/ARKit)
-*   **Data Management:** JSON-based metadata loading (Milestone 1 completed).
-*   **Asset Pipeline:** Unity Addressables for asynchronous asset loading (Milestone 2 completed).
+*   **Data Management:** Firebase Firestore (NoSQL Database) for dynamic site metadata.
+*   **Asset Pipeline:** Remote Unity Addressables hosted on Netlify for OTA (Over-The-Air) model updates.
 *   **Pattern:** Centralized Event Bus (`AREvents`) decoupling Logic, UI, and Data layers.
 
 ## 🚀 Getting Started
@@ -48,5 +48,5 @@ This project follows a **Event-Driven Architecture** and utilizes **Data-Driven 
 - [x] **Milestone 0:** Project Setup & Git LFS Integration.
 - [x] **Milestone 1:** Dynamic Data Injection (JSON) & Smart Label System.
 - [x] **Milestone 2:** Asset Pipeline Optimization (Addressables).
-- [ ] **Milestone 3:** Cloud Backend Integration (Firebase).
+- [x] **Milestone 3:** Cloud Backend Integration (Firebase Firestore & Netlify Hosting).
 - [ ] **Milestone 4:** Full User Interface & Navigation.
