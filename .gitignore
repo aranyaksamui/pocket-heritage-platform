@@ -79,3 +79,6 @@ Assets/Firebase/google-services.json
 Assets/Firebase/GoogleService-Info.plist
 Assets/StreamingAssets/google-services-desktop.json
 Assets/Plugins/Android/FirebaseApp.androidlib/
+
+# Addressables Build Output
+ServerData/

@@ -15,9 +15,9 @@ MonoBehaviour:
   m_DefaultGroup: 1e972335065fe034dbc4c2fe3dc06cc2
   m_currentHash:
     serializedVersion: 2
-    Hash: 47e18e5514320c28a7d8995bd36e4f01
+    Hash: 00000000000000000000000000000000
   m_OptimizeCatalogSize: 0
-  m_BuildRemoteCatalog: 0
+  m_BuildRemoteCatalog: 1
   m_CatalogRequestsTimeout: 0
   m_DisableCatalogUpdateOnStart: 0
   m_InternalIdNamingMode: 0
@@ -80,6 +80,20 @@ MonoBehaviour:
         m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget]'
       - m_Id: c8595ac8b7ba1614bb93e7acf426f8e1
         m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
+    - m_InheritedParent: 
+      m_Id: d49add1679be5fd4db9f162814be459b
+      m_ProfileName: NetlifyAddressablesProfile
+      m_Values:
+      - m_Id: 4a37e3750b963f940a78032162b9bdbd
+        m_Value: 'ServerData/[BuildTarget]'
+      - m_Id: 58b827de6977e9d4791877086dfc3f0c
+        m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]/[BuildTarget]'
+      - m_Id: 9c1a41fb1f5080144bd1feba2d3fa41c
+        m_Value: 'https://pocket-heritage-platform-b79c9a.netlify.app/[BuildTarget]'
+      - m_Id: b89fff31b8a130649b4b9015b32bffaa
+        m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget]'
+      - m_Id: c8595ac8b7ba1614bb93e7acf426f8e1
+        m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
     m_ProfileEntryNames:
     - m_Id: 4a37e3750b963f940a78032162b9bdbd
       m_Name: Remote.BuildPath
@@ -112,4 +126,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 70739bb3a471b9c44bfba63c19c5ffdc, type: 2}
   - {fileID: 11400000, guid: 393f66b472393ff4388cfc1dd45c817f, type: 2}
   - {fileID: 11400000, guid: 9682f7c3d8016f34b82151118bbc5932, type: 2}
-  m_ActiveProfileId: 4fb9f19c53bd6a849824aa2d9bf20046
+  m_ActiveProfileId: d49add1679be5fd4db9f162814be459b
