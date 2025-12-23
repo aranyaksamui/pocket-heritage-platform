@@ -50,6 +50,3 @@ This project follows a **Event-Driven Architecture** and utilizes **Data-Driven 
 - [x] **Milestone 2:** Asset Pipeline Optimization (Addressables).
 - [ ] **Milestone 3:** Cloud Backend Integration (Firebase).
 - [ ] **Milestone 4:** Full User Interface & Navigation.
-
----
-*Developed by Aranyak Samui*
