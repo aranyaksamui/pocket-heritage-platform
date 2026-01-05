@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 
 /// <summary>
@@ -8,11 +7,12 @@ using System.Collections.Generic;
 ///     Stores all the historical data about a heritage site. 
 /// </summary>
 [Serializable]
-public class SiteData
+public class SiteInfo
 {
+    public string siteId;
     public string siteName;
     public string siteDesc;
-    public List<FeatureData> features;
+    public string siteModelId;
 }
 
 /// <summary>

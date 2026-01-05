@@ -5,6 +5,7 @@
 */
 public enum UIState
 {
+    MainMenu,
     Placement,
     Interaction,
     Navigation,

@@ -32,7 +32,7 @@ public class FirebaseInit : MonoBehaviour
     {
         if (task.IsFaulted)
         {
-            Debug.LogError($"[FirebaseInit/VerifyDependencyStatus()] Firebase verify dependency failed!\n {task.Exception}");
+            Debug.LogError($"[FirebaseInit/VerifyDependencyStatus()] Firebase verify dependency failed!\n\n {task.Exception}");
             return;
         }
         // Get the status from the task result

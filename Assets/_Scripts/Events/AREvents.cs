@@ -49,4 +49,14 @@ public static class AREvents
     ///     This raises an event when the asset gets loaded.
     /// </summary>
     public static System.Action<bool, string> OnLoadingStatusChanged;
+
+    // Misc
+    /// <summary>
+    ///     This raises an event when the heritage sites are loaded from the GetAllSites API and the Main Menu site list is populated.
+    /// </summary>
+    public static System.Action OnSitesLoadedAndListPopulated;
+    /// <summary>
+    ///     This raises an event when the heritage site is selected to be viewed
+    /// </summary>
+    public static System.Action<string, string> OnSiteSelected;
 }

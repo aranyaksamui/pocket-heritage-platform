@@ -1,10 +1,5 @@
 using UnityEngine;
-using Firebase.Firestore;
-using Firebase.Extensions;
-using System.Collections.Generic;
 using System.Collections;
-using System.Threading.Tasks;
-using System;
 
 
 /// <summary>
@@ -13,19 +8,26 @@ using System;
 public class SiteDataManager : MonoBehaviour
 {
     [Header("Settings")]
-    [Tooltip("Heritage site Firestore document id")]
-    [SerializeField] string firestoreSiteId = "site_tajmahal";
     [Tooltip("The smart label prefab pointing to the specific heritage feature")]
     [SerializeField] GameObject smartLabelPrefab;
+
+    private string activeSiteId;
 
     private void OnEnable()
     {
         AREvents.OnObjectPlaced += HandleObjectPlaced;
+        AREvents.OnSiteSelected += HandleSiteSelected;
     }
 
     private void OnDisable()
     {
         AREvents.OnObjectPlaced -= HandleObjectPlaced;
+        AREvents.OnSiteSelected -= HandleSiteSelected;
+    }
+
+    private void HandleSiteSelected(string siteId, string siteModelId)
+    {
+        activeSiteId = siteId;
     }
 
     /// <summary>
@@ -45,15 +47,14 @@ public class SiteDataManager : MonoBehaviour
             newContainer.transform.SetParent(siteObject.transform, false);
             featuresContainer = newContainer.transform;
         }
-        //StartCoroutine(WaitForFirebaseAndFetch(featuresContainer));
-        FetchSiteDataFromCloud(featuresContainer);
+        StartCoroutine(WaitForFirebaseAndFetch(featuresContainer));
+        //FetchSiteDataFromCloud(featuresContainer);
     }
 
     /// <summary>
     ///     Coroutine to wait for Firebase to be ready (when FirebaseInit sets IsReady = true) and only then fetch data from cloud.
     /// </summary>
     /// <param name="featureContainer">Features Gameobject container to store the spawned amart labels.</param>
-    /// <returns></returns>
     private IEnumerator WaitForFirebaseAndFetch(Transform featureContainer)
     {
         while (!FirebaseInit.IsReady)
@@ -67,86 +68,28 @@ public class SiteDataManager : MonoBehaviour
     }
 
     /// <summary>
-    ///     Load the site data from Firestore database.
+    ///     Load the site data from Firestore database using the GetFeaturesForSite API.
     /// </summary>
     /// <param name="container">Features Gameobject container to store the spawned amart labels.</param>
-    private async void FetchSiteDataFromCloud(Transform container)
+    private void FetchSiteDataFromCloud(Transform container)
     {
         // Turn on the loading screen while the app fetches site data from Firestore
         AREvents.OnLoadingStatusChanged.Invoke(true, "Fetching data from Firestore...");
-        // Get the cached (pre-warmed) Firestore instance we did in FirebaseInit
-        FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
-        // Query structure to get the site_features collection of a heritage site
-        CollectionReference featuresRef = db.Collection("heritage_sites").Document(firestoreSiteId).Collection("site_features");
-        // Send request to get the features collection
-        QuerySnapshot featuresCollection = await featuresRef.GetSnapshotAsync().ContinueWithOnMainThread(GetQuerySnapshot);
-        // Process and span each feature document in the collection
-        foreach (DocumentSnapshot document in featuresCollection)
-        {
-            ProcessDocument(document, container);
-        }
-        // Change state from loading to interaction after labels are spawned
-        AREvents.OnFeatureLabelsSpawned.Invoke();
-    }
-
-    /// <summary>
-    ///     The callback function that gets the snapshots from query result.
-    /// </summary>
-    /// <param name="snapshotTask">The snapshots task.</param>
-    private QuerySnapshot GetQuerySnapshot(Task<QuerySnapshot> snapshotTask)
-    {
-        AREvents.OnLoadingStatusChanged(false, "");
-
-        if (snapshotTask.IsFaulted)
-        {
-            Debug.Log($"[SiteDataManager/WaitForFirebaseAndFetch()] \n {snapshotTask.Exception}");
-            return null;
-        }
-
-        QuerySnapshot snapshot = snapshotTask.Result;
-        Debug.Log($"[SiteDataManager/WaitForFirebaseAndFetch()] Downloaded {snapshot.Count} labels");
-        return snapshot;
-    }
-
-    /// <summary>
-    ///     Process each feature document and convert it to Firestore to C# format for spawning over the parent heritage site model.
-    /// </summary>
-    /// <param name="document">The feature document.</param>
-    /// <param name="container">Feature container.</param>
-    private void ProcessDocument(DocumentSnapshot document, Transform container)
-    {
-        // Converting Firebase document to C# dictionary
-        Dictionary<string, object> documentData = document.ToDictionary();
-
-        FeatureData featureData = new FeatureData();
-        // Safe mapping of name and description of the site data
-        featureData.featureName = documentData.ContainsKey("feature_name") 
-            ? documentData["feature_name"].ToString() 
-            : "Unknown name";
-        featureData.featureDesc = documentData.ContainsKey("feature_description") 
-            ? documentData["feature_description"].ToString() 
-            : "Unknown description";
-        featureData.triggerVisibilityDist = documentData.ContainsKey("feature_trigger_visibility_distance")
-            ? Convert.ToSingle(documentData["feature_trigger_visibility_distance"]) 
-            : 1.5f;
-
-        Debug.Log($"[SiteDataManager/ProcessDocument()] \n Feature name: {featureData.featureName} \n Feature desc: {featureData.featureDesc}");
-
-        // Safe mapping of position
-        if (documentData.ContainsKey("feature_position"))
-        {
-            // Firestore stores Maps as Dictionaries
-            Dictionary<string, object> posMap = (Dictionary<string, object>) documentData["feature_position"];
-
-            float posX = Convert.ToSingle(posMap["position_x"]);
-            float posY = Convert.ToSingle(posMap["position_y"]);
-            float posZ = Convert.ToSingle(posMap["position_z"]);
-
-            featureData.featurePos = new PositionData { x = posX, y = posY, z = posZ };
-        }
-        else featureData.featurePos = new PositionData { x = 0f, y = 0f, z = 0f };
-        // Spawn the feature label
-        SpawnFeatureLabel(featureData, container);
+        // Call the GetFeaturesForSite API
+        CloudDataManager.Instance.GetFeaturesForSite(activeSiteId, 
+            (features) => 
+            {
+                foreach (FeatureData feature in features)
+                {
+                    SpawnFeatureLabel(feature, container);
+                }
+                AREvents.OnFeatureLabelsSpawned.Invoke();
+            }, 
+            (error) => 
+            {
+                Debug.LogError($"[SiteDataManager/FetchSiteDataFromCloud]\n{error}");
+            }
+        );
     }
 
     /// <summary>

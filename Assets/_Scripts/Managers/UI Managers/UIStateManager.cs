@@ -6,9 +6,12 @@ using UnityEngine;
 /// </summary>
 public class UIStateManager : MonoBehaviour
 {
-    [SerializeField] UIState currentState = UIState.Placement;
+    [Tooltip("Select the starting UI state (UI to show when the app starts")]
+    [SerializeField] UIState currentState = UIState.MainMenu;
 
     [Header("State canvases")]
+    [Tooltip("The heritage main menu UI")]
+    [SerializeField] Canvas mainMenuCanvas;
     [Tooltip("The heritage placement UI")]
     [SerializeField] Canvas placementCanvas;
     [Tooltip("The heritage object interaction UI")]
@@ -46,6 +49,8 @@ public class UIStateManager : MonoBehaviour
 
     private void OnEnable()
     {
+        AREvents.OnSitesLoadedAndListPopulated += HandleSitesPopulated;
+        AREvents.OnSiteSelected += HandleSiteSelected;
         AREvents.OnObjectPlaced += HandleObjectPlaced;
         AREvents.OnLoadingStatusChanged += HandleLoadingStatus;
         AREvents.OnFeatureLabelsSpawned += HandleFeatureLabelSpawned;
@@ -53,6 +58,8 @@ public class UIStateManager : MonoBehaviour
 
     private void OnDisable()
     {
+        AREvents.OnSitesLoadedAndListPopulated -= HandleSitesPopulated;
+        AREvents.OnSiteSelected -= HandleSiteSelected;
         AREvents.OnObjectPlaced -= HandleObjectPlaced;
         AREvents.OnLoadingStatusChanged -= HandleLoadingStatus;
         AREvents.OnFeatureLabelsSpawned -= HandleFeatureLabelSpawned;
@@ -63,9 +70,10 @@ public class UIStateManager : MonoBehaviour
     /// </summary>
     private void InitializeCanvases()
     {
-        if (placementCanvas == null || interactionCanvas == null) return;
+        if (loadingCanvas == null || mainMenuCanvas == null || placementCanvas == null || interactionCanvas == null) return;
         stateCanvases = new Dictionary<UIState, Canvas>
         {
+            { UIState.MainMenu, mainMenuCanvas },
             { UIState.Placement, placementCanvas },
             { UIState.Interaction, interactionCanvas },
             { UIState.Navigation, navigationCanvas },
@@ -78,7 +86,7 @@ public class UIStateManager : MonoBehaviour
     ///     Change the UI state to a new state
     /// </summary>
     /// <param name="newState">The next UI state</param>
-    public void ChangeState(UIState newState)
+    private void ChangeState(UIState newState)
     {
         // Gurad clause: prevent state change if new state is current state itself
         if (newState == currentState) return;
@@ -96,7 +104,7 @@ public class UIStateManager : MonoBehaviour
     /// </summary>
     /// <param name="previousState">Previous or current UI state to be updated.</param>
     /// <param name="newState">Next UI state.</param>
-    public void UpdateCanvasVisibility(UIState previousState, UIState newState)
+    private void UpdateCanvasVisibility(UIState previousState, UIState newState)
     {
         if (stateCanvases.ContainsKey(previousState) && stateCanvases[previousState] != null)
             stateCanvases[previousState].enabled = false;
@@ -105,8 +113,24 @@ public class UIStateManager : MonoBehaviour
     }
 
     // State change methods
+    private void HandleSitesPopulated()
+    {
+        ChangeState(UIState.MainMenu);
+    }
+
     /// <summary>
-    ///     Change UI state on object placed.
+    ///     Handles site selection and changes UI state from mainmenu to placement.
+    /// </summary>
+    /// <param name="siteId"></param>
+    /// <param name="siteModelId"></param>
+    private void HandleSiteSelected(string siteId, string siteModelId)
+    {
+        Debug.Log($"[UIStateManager/HandleSiteSelected] Selected site: {siteId}");
+        ChangeState(UIState.Placement);
+    }
+
+    /// <summary>
+    ///     Change UI state from placement to interaction on object placed.
     /// </summary>
     private void HandleObjectPlaced(GameObject placedObject)
     {
@@ -133,4 +157,5 @@ public class UIStateManager : MonoBehaviour
     {
         ChangeState(UIState.Interaction);
     }
+
 }

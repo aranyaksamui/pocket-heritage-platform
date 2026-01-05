@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -8,11 +9,25 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 /// </summary>
 public class ARAssetLoader : MonoBehaviour
 {
-    [Header("Configuration")]
-    [Tooltip("The address of the asset in Addressables group (Default Local Group)")]
-    [SerializeField] string assetAddress = "site_model_tajmahal";
-
+    private string assetAddress;
     private GameObject loadedAssetObject;
+
+    private void OnEnable()
+    {
+        AREvents.OnSiteSelected += HandleSiteSelection;
+    }
+
+    private void OnDisable()
+    {
+        AREvents.OnSiteSelected -= HandleSiteSelection;
+    }
+
+    // Handle site selection from Main Menu    
+    private void HandleSiteSelection(string siteId, string siteModelId)
+    {
+        // Set the selected site model id
+        assetAddress = siteModelId;
+    }
 
     /// <summary>
     ///     Loads and places the site model prefab asset asynchronously using the asset's location address.

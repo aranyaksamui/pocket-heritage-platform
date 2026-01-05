@@ -14,7 +14,6 @@ public class PlacementUI : MonoBehaviour
     private void Awake()
     {
         placementUICanvas = GetComponent<Canvas>();
-        placementUICanvas.enabled = true;
     }
 
     private void OnEnable()
@@ -34,6 +33,7 @@ public class PlacementUI : MonoBehaviour
     // Call this to update UI when planes are detected
     public void UpdatePlacementHint(bool planesDetected)
     {
+        if (placementUICanvas != null && !placementUICanvas.enabled) return;
         if (planesDetected)
         {
             placementText.text = "Flat surface detected. Click the place button!";
