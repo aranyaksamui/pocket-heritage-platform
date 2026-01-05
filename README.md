@@ -7,8 +7,10 @@
 Pocket Heritage is an Augmented Reality (AR) platform designed to preserve and visualize India's cultural heritage. The application allows users to place high-fidelity 3D models of heritage sites (like the *Rani Ki Vav* stepwell and the *Taj Mahal*) into the real world.
 
 Key features include:
+* **Dynamic Dashboard:** A cloud-driven main menu allowing users to browse available heritage sites.
+*   **On-Demand Content (DLC):** Hybrid asset system supporting both pre-installed models and over-the-air downloads for new sites to save device storage.
 *   **Immersive Visualization:** Place scale models of monuments on flat surfaces.
-*   **Smart Labels:** Context-aware UI that reveals historical details based on proximity (LOD - Level of Detail).
+*   **Smart Labels:** Context-aware UI that reveals historical details based on proximity (Camera distance).
 *   **Interactive Exploration:** Users can physically walk around the model to explore distinct features.
 
 ## 🏗️ Architecture (Current State)
@@ -16,7 +18,7 @@ This project follows a **Event-Driven Architecture** and utilizes **Data-Driven 
 
 *   **Client:** Unity (C#)
 *   **AR System:** AR Foundation (ARCore/ARKit)
-*   **Data Management:** Firebase Firestore (NoSQL Database) for dynamic site metadata.
+*   **Backend:** Firebase Firestore (NoSQL) accessed via a **Repository Pattern** (`CloudDataManager`) for caching and centralized data fetching.
 *   **Asset Pipeline:** Remote Unity Addressables hosted on Netlify for OTA (Over-The-Air) model updates.
 *   **Pattern:** Centralized Event Bus (`AREvents`) decoupling Logic, UI, and Data layers.
 
@@ -49,4 +51,4 @@ This project follows a **Event-Driven Architecture** and utilizes **Data-Driven 
 - [x] **Milestone 1:** Dynamic Data Injection (JSON) & Smart Label System.
 - [x] **Milestone 2:** Asset Pipeline Optimization (Addressables).
 - [x] **Milestone 3:** Cloud Backend Integration (Firebase Firestore & Netlify Hosting).
-- [ ] **Milestone 4:** Full User Interface & Navigation.
+- [x] **Milestone 4:** Full User Interface & Navigation.
