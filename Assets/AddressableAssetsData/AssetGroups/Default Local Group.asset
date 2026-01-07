@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: 1e972335065fe034dbc4c2fe3dc06cc2
   m_SerializeEntries:
+  - m_GUID: 0c30c2cf56d7ee5419ffe5b71f0376d4
+    m_Address: site_model_angkorwat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 20691b7aa9e02f14bb1d16c2627d80ac
     m_Address: site_model_tajmahal
     m_ReadOnly: 0

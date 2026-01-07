@@ -51,6 +51,7 @@ public static class AREvents
     public static System.Action<bool, string> OnLoadingStatusChanged;
 
     // Misc
+    public static System.Action OnSitesDownloaded;
     /// <summary>
     ///     This raises an event when the heritage sites are loaded from the GetAllSites API and the Main Menu site list is populated.
     /// </summary>

@@ -14,8 +14,6 @@ public class SiteUIItem : MonoBehaviour
     [Header("UI References")]
     [Tooltip("The name of the site")]
     [SerializeField] TMP_Text nameText;
-    [Tooltip("The description of the site")]
-    [SerializeField] TMP_Text descText;
     [Tooltip("Button text switches from download / view")]
     [SerializeField] TMP_Text buttonText;
     [Tooltip("The actual action button (shows 'Download' if site model not downloaded else shows 'View'")]
@@ -34,7 +32,6 @@ public class SiteUIItem : MonoBehaviour
         Debug.Log($"[SiteUIItem/Setup()] 4. Setting up button for: {site.siteId} {site.siteName}");
         // Filling the site data in the UI
         nameText.text = site.siteName;
-        descText.text = site.siteDesc;
         Debug.Log($"[SiteUIItem/Setup()] 5. Button name: {nameText.text}");
         // Store the site IDs we fetch from firestore
         siteId = site.siteId;
@@ -82,6 +79,7 @@ public class SiteUIItem : MonoBehaviour
         else
         {
             Debug.Log("[SiteUIItem/UpdateUI()] Model is already downloaded.");
+            AREvents.OnSitesDownloaded.Invoke();
             buttonText.text = "View Model";
         }
     }

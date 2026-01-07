@@ -1,0 +1,130 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3728069452065369394
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 9118242044882288768}
+    m_Modifications:
+    - target: {fileID: 8235112581783254577, guid: 8eb3b670b4560f64fa97a4eb31dd2dd8, type: 3}
+      propertyPath: m_Name
+      value: Angkor Wat
+      objectReference: {fileID: 0}
+    - target: {fileID: 8719866004382559371, guid: 8eb3b670b4560f64fa97a4eb31dd2dd8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.266
+      objectReference: {fileID: 0}
+    - target: {fileID: 8719866004382559371, guid: 8eb3b670b4560f64fa97a4eb31dd2dd8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.323
+      objectReference: {fileID: 0}
+    - target: {fileID: 8719866004382559371, guid: 8eb3b670b4560f64fa97a4eb31dd2dd8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.146
+      objectReference: {fileID: 0}
+    - target: {fileID: 8719866004382559371, guid: 8eb3b670b4560f64fa97a4eb31dd2dd8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071042
+      objectReference: {fileID: 0}
+    - target: {fileID: 8719866004382559371, guid: 8eb3b670b4560f64fa97a4eb31dd2dd8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.70708233
+      objectReference: {fileID: 0}
+    - target: {fileID: 8719866004382559371, guid: 8eb3b670b4560f64fa97a4eb31dd2dd8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.005876671
+      objectReference: {fileID: 0}
+    - target: {fileID: 8719866004382559371, guid: 8eb3b670b4560f64fa97a4eb31dd2dd8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.0019358738
+      objectReference: {fileID: 0}
+    - target: {fileID: 8719866004382559371, guid: 8eb3b670b4560f64fa97a4eb31dd2dd8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.367
+      objectReference: {fileID: 0}
+    - target: {fileID: 8719866004382559371, guid: 8eb3b670b4560f64fa97a4eb31dd2dd8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 89.999
+      objectReference: {fileID: 0}
+    - target: {fileID: 8719866004382559371, guid: 8eb3b670b4560f64fa97a4eb31dd2dd8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -89.68
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8eb3b670b4560f64fa97a4eb31dd2dd8, type: 3}
+--- !u!4 &5386283733125775801 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8719866004382559371, guid: 8eb3b670b4560f64fa97a4eb31dd2dd8, type: 3}
+  m_PrefabInstance: {fileID: 3728069452065369394}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5115375946704543733
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5145646978198376709, guid: 4e4e2f1e27d406e429f3f5557989027a, type: 3}
+      propertyPath: m_Name
+      value: Angkor Wat Object
+      objectReference: {fileID: 0}
+    - target: {fileID: 7212727792721954232, guid: 4e4e2f1e27d406e429f3f5557989027a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7212727792721954232, guid: 4e4e2f1e27d406e429f3f5557989027a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7212727792721954232, guid: 4e4e2f1e27d406e429f3f5557989027a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7212727792721954232, guid: 4e4e2f1e27d406e429f3f5557989027a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7212727792721954232, guid: 4e4e2f1e27d406e429f3f5557989027a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7212727792721954232, guid: 4e4e2f1e27d406e429f3f5557989027a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7212727792721954232, guid: 4e4e2f1e27d406e429f3f5557989027a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7212727792721954232, guid: 4e4e2f1e27d406e429f3f5557989027a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7212727792721954232, guid: 4e4e2f1e27d406e429f3f5557989027a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7212727792721954232, guid: 4e4e2f1e27d406e429f3f5557989027a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 3341565412008635667, guid: 4e4e2f1e27d406e429f3f5557989027a, type: 3}
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4068992945378516853, guid: 4e4e2f1e27d406e429f3f5557989027a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5386283733125775801}
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4e4e2f1e27d406e429f3f5557989027a, type: 3}
+--- !u!4 &9118242044882288768 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4068992945378516853, guid: 4e4e2f1e27d406e429f3f5557989027a, type: 3}
+  m_PrefabInstance: {fileID: 5115375946704543733}
+  m_PrefabAsset: {fileID: 0}

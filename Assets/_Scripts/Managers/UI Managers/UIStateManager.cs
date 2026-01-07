@@ -49,6 +49,7 @@ public class UIStateManager : MonoBehaviour
 
     private void OnEnable()
     {
+        AREvents.OnSitesDownloaded += HandleSitesDownloaded;
         AREvents.OnSitesLoadedAndListPopulated += HandleSitesPopulated;
         AREvents.OnSiteSelected += HandleSiteSelected;
         AREvents.OnObjectPlaced += HandleObjectPlaced;
@@ -57,7 +58,8 @@ public class UIStateManager : MonoBehaviour
     }
 
     private void OnDisable()
-    {
+    { 
+        AREvents.OnSitesDownloaded -= HandleSitesDownloaded;
         AREvents.OnSitesLoadedAndListPopulated -= HandleSitesPopulated;
         AREvents.OnSiteSelected -= HandleSiteSelected;
         AREvents.OnObjectPlaced -= HandleObjectPlaced;
@@ -113,6 +115,17 @@ public class UIStateManager : MonoBehaviour
     }
 
     // State change methods
+    /// <summary>
+    ///     Changes state to Main Menu when sites are downloaded.d
+    /// </summary>
+    private void HandleSitesDownloaded()
+    {
+        ChangeState(UIState.MainMenu);
+    }
+
+    /// <summary>
+    ///     Changes state to Main Menu when sites list is ready.
+    /// </summary>
     private void HandleSitesPopulated()
     {
         ChangeState(UIState.MainMenu);
