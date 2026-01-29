@@ -29,8 +29,6 @@ public class ARSmartLabel : MonoBehaviour
     [Header("Label texts")]
     [Tooltip("Feature name")]
     [SerializeField] TMP_Text featureName;
-    [Tooltip("Feature description")]
-    [SerializeField] TMP_Text featureDescription;
 
     private Transform camTransform;
     private FeatureData featureData;
@@ -67,10 +65,9 @@ public class ARSmartLabel : MonoBehaviour
         featureData = siteFeatureData;
         // Set the feature data
         triggerVisibilityDistance = featureData.triggerVisibilityDist;
-        if (featureName != null && featureDescription != null)
+        if (featureName != null)
         {
             featureName.text = featureData.featureName;
-            featureDescription.text = featureData.featureDesc;
         }
         else Debug.LogError("[ARSmartLabel/InitializeSmartLabel()] feature name or description is null!");
         // Set the local position of the label relative to the parent object

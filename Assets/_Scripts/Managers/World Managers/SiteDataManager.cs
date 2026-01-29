@@ -16,18 +16,18 @@ public class SiteDataManager : MonoBehaviour
     private void OnEnable()
     {
         AREvents.OnObjectPlaced += HandleObjectPlaced;
-        AREvents.OnSiteSelected += HandleSiteSelected;
+        AREvents.OnSiteSelection += HandleSiteSelected;
     }
 
     private void OnDisable()
     {
         AREvents.OnObjectPlaced -= HandleObjectPlaced;
-        AREvents.OnSiteSelected -= HandleSiteSelected;
+        AREvents.OnSiteSelection -= HandleSiteSelected;
     }
 
-    private void HandleSiteSelected(string siteId, string siteModelId)
+    private void HandleSiteSelected(SiteInfo site)
     {
-        activeSiteId = siteId;
+        activeSiteId = site.siteId;
     }
 
     /// <summary>
@@ -79,10 +79,8 @@ public class SiteDataManager : MonoBehaviour
         CloudDataManager.Instance.GetFeaturesForSite(activeSiteId, 
             (features) => 
             {
-                foreach (FeatureData feature in features)
-                {
-                    SpawnFeatureLabel(feature, container);
-                }
+                ActiveSiteContext.Instance.SetSiteFeatures(features);
+                foreach (FeatureData feature in features) SpawnFeatureLabel(feature, container);
                 AREvents.OnFeatureLabelsSpawned.Invoke();
             }, 
             (error) => 

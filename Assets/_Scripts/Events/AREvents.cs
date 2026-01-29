@@ -57,7 +57,22 @@ public static class AREvents
     /// </summary>
     public static System.Action OnSitesLoadedAndListPopulated;
     /// <summary>
-    ///     This raises an event when the heritage site is selected to be viewed
+    ///     This raises an event when the user presses the back button in the UI.
     /// </summary>
-    public static System.Action<string, string> OnSiteSelected;
+    public static System.Action OnBackButtonClicked;
+    /// <summary>
+    ///     This raises an event when the Return to Main Menu or Home button is clicked
+    /// </summary>
+    public static System.Action OnReturnToSiteMenu;
+
+    // Active site context
+    /// <summary>
+    ///     This raises and event when a site is selected in the Main Menu using the SiteUIItem buttons.
+    /// </summary>
+    public static System.Action<SiteInfo> OnSiteSelection;
+    /// <summary>
+    ///     This raises an event when the data for current active site is cleared.
+    /// </summary>
+    public static System.Action OnContextCleared;
+
 }

@@ -23,7 +23,8 @@ public class UIStateManager : MonoBehaviour
     [Tooltip("Loading UI")]
     [SerializeField] Canvas loadingCanvas;
 
-    Dictionary<UIState, Canvas> stateCanvases;
+    private Dictionary<UIState, Canvas> stateCanvases;
+    private Stack<UIState> uiHistory;
 
 
     /// <summary>
@@ -49,9 +50,13 @@ public class UIStateManager : MonoBehaviour
 
     private void OnEnable()
     {
+        // Button listeners subscribe
+        AREvents.OnBackButtonClicked += GoBack;
+        AREvents.OnReturnToSiteMenu += ReturnToSiteMenu;
+        // State change listeners subscribe
         AREvents.OnSitesDownloaded += HandleSitesDownloaded;
         AREvents.OnSitesLoadedAndListPopulated += HandleSitesPopulated;
-        AREvents.OnSiteSelected += HandleSiteSelected;
+        AREvents.OnSiteSelection += HandleSiteSelected;
         AREvents.OnObjectPlaced += HandleObjectPlaced;
         AREvents.OnLoadingStatusChanged += HandleLoadingStatus;
         AREvents.OnFeatureLabelsSpawned += HandleFeatureLabelSpawned;
@@ -59,9 +64,13 @@ public class UIStateManager : MonoBehaviour
 
     private void OnDisable()
     { 
+        // Button listeners unsubscribe
+        AREvents.OnBackButtonClicked -= GoBack;
+        AREvents.OnReturnToSiteMenu -= ReturnToSiteMenu;
+        // State change listeners unsubscribe
         AREvents.OnSitesDownloaded -= HandleSitesDownloaded;
         AREvents.OnSitesLoadedAndListPopulated -= HandleSitesPopulated;
-        AREvents.OnSiteSelected -= HandleSiteSelected;
+        AREvents.OnSiteSelection -= HandleSiteSelected;
         AREvents.OnObjectPlaced -= HandleObjectPlaced;
         AREvents.OnLoadingStatusChanged -= HandleLoadingStatus;
         AREvents.OnFeatureLabelsSpawned -= HandleFeatureLabelSpawned;
@@ -82,16 +91,24 @@ public class UIStateManager : MonoBehaviour
             { UIState.Info, infoCanvas },
             { UIState.Loading, loadingCanvas },
         };
+
+        uiHistory = new Stack<UIState>();
     }
 
     /// <summary>
     ///     Change the UI state to a new state
     /// </summary>
     /// <param name="newState">The next UI state</param>
-    private void ChangeState(UIState newState)
+    /// <param name="addToHistory">Going forward add the current UI to history. Going backward do not add the current UI to history</param>
+    private void ChangeState(UIState newState, bool addToHistory = true)
     {
         // Gurad clause: prevent state change if new state is current state itself
         if (newState == currentState) return;
+        if (addToHistory && currentState != UIState.Loading)
+        {
+            uiHistory.Push(currentState);
+            foreach (UIState state in uiHistory) Debug.Log($"[UIStateManager/ChangeState()] {state.ToString()}");
+        }
         // Store previous state for transition logic (back button)
         UIState previousState = currentState;
         currentState = newState;
@@ -112,6 +129,38 @@ public class UIStateManager : MonoBehaviour
             stateCanvases[previousState].enabled = false;
         if (stateCanvases.ContainsKey(newState) && stateCanvases[newState])
             stateCanvases[newState].enabled = true;
+    }
+
+    /// <summary>
+    ///     Go back to the previous UI state.
+    /// </summary>
+    private void GoBack()
+    {
+        // If current state is loading, do not add it to the stack (interact with it because it might mess up downloads)
+        if (currentState == UIState.Loading) return;
+        // If there is a history: go back else: There is no UI history
+        if (uiHistory.Count > 0)
+        {
+            UIState previousState = uiHistory.Pop();
+            ChangeState(previousState, false);
+        }
+        else
+        {
+            Debug.Log("[UIStateManager/GoBack()] You are already at the root. There is no UI History.");
+        }
+    }
+
+    /// <summary>
+    ///     Call this event handler when Return to Main Menu / Home button is pressed.
+    /// </summary>
+    private void ReturnToSiteMenu()
+    {
+        // Clear the UI stack
+        uiHistory.Clear();
+        // Clear the active context
+        ActiveSiteContext.Instance.ClearContext();
+        // Change the UI State to main menu
+        ChangeState(UIState.MainMenu, false);
     }
 
     // State change methods
@@ -136,9 +185,9 @@ public class UIStateManager : MonoBehaviour
     /// </summary>
     /// <param name="siteId"></param>
     /// <param name="siteModelId"></param>
-    private void HandleSiteSelected(string siteId, string siteModelId)
+    private void HandleSiteSelected(SiteInfo site)
     {
-        Debug.Log($"[UIStateManager/HandleSiteSelected] Selected site: {siteId}");
+        Debug.Log($"[UIStateManager/HandleSiteSelected] Selected site: {site.siteId}");
         ChangeState(UIState.Placement);
     }
 
@@ -170,5 +219,4 @@ public class UIStateManager : MonoBehaviour
     {
         ChangeState(UIState.Interaction);
     }
-
 }

@@ -41,6 +41,7 @@ public class ARSessionManager : MonoBehaviour
     // Call this event handler on plane detection
     private void OnTrackablesChanged(ARTrackablesChangedEventArgs<ARPlane> changes)
     {
+        Debug.Log("[ARSessionManager/OnTrackablesChanged()] Trackables changed");
         if (!arePlanesDetected && changes.added.Count > 0)
         {
             Debug.Log("[ARSessionManager/OnTrackablesChanged()] First planes detected!");

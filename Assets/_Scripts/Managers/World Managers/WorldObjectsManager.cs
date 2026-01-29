@@ -28,6 +28,7 @@ public class WorldObjectsManager : MonoBehaviour
     {
         // Subscribe to AREvents
         AREvents.OnPlaceObjectRequested += PlaceObject;
+        AREvents.OnContextCleared += HandleSiteDespawn;
 
     }
     
@@ -35,6 +36,7 @@ public class WorldObjectsManager : MonoBehaviour
     {
         // Unsubscribe to AREvents
         AREvents.OnPlaceObjectRequested -= PlaceObject;
+        AREvents.OnContextCleared -= HandleSiteDespawn;
     }
 
     private void Start()
@@ -58,5 +60,10 @@ public class WorldObjectsManager : MonoBehaviour
             else Debug.LogError("[WorldObjectsManager/PlaceObject()] Model object already spawned");
         }
         else Debug.LogError("[WorldObjectsManager/PlaceObject()] Placement Failed! Point you camera to a flat detected surface");
+    }
+
+    private void HandleSiteDespawn()
+    {
+        isObjectSpawned = false;
     }
 }

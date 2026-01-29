@@ -48,7 +48,6 @@ public class MainMenuUI : MonoBehaviour
                 AREvents.OnLoadingStatusChanged?.Invoke(false, "");
                 Debug.Log($"[MainMenuUI/FetchListFromCloud()] 2.1. No. of sites fetched: {sites.Count}");
                 Debug.Log($"[MainMenuUI/FetchListFromCloud()] 2.2. {sites[0].siteName}");
-                Debug.Log($"[MainMenuUI/FetchListFromCloud()] 2.3. {sites[0].siteDesc}");
                 GenerateSiteList(sites);
                 hasLoaded = true;
                 AREvents.OnSitesLoadedAndListPopulated.Invoke();

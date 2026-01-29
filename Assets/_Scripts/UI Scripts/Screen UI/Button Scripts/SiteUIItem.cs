@@ -14,14 +14,17 @@ public class SiteUIItem : MonoBehaviour
     [Header("UI References")]
     [Tooltip("The name of the site")]
     [SerializeField] TMP_Text nameText;
+    [Tooltip("The site_model_id of the site")]
+    [SerializeField] TMP_Text siteModelIdText;
     [Tooltip("Button text switches from download / view")]
     [SerializeField] TMP_Text buttonText;
     [Tooltip("The actual action button (shows 'Download' if site model not downloaded else shows 'View'")]
     [SerializeField] Button actionButton;
 
-    private string siteId;
-    private string siteModelId;
     private long downloadSizeInBytes;
+
+    SiteInfo mySiteData;
+
 
     /// <summary>
     ///     Setup the Main Menu site button with SiteInfo data.
@@ -29,13 +32,13 @@ public class SiteUIItem : MonoBehaviour
     /// <param name="site">The site data.</param>
     public void Setup(SiteInfo site)
     {
-        Debug.Log($"[SiteUIItem/Setup()] 4. Setting up button for: {site.siteId} {site.siteName}");
+        mySiteData = site;
+        Debug.Log($"[SiteUIItem/Setup()] 4. Setting up button for: {mySiteData.siteId} {mySiteData.siteName}");
         // Filling the site data in the UI
-        nameText.text = site.siteName;
+        nameText.text = mySiteData.siteName;
         Debug.Log($"[SiteUIItem/Setup()] 5. Button name: {nameText.text}");
-        // Store the site IDs we fetch from firestore
-        siteId = site.siteId;
-        siteModelId = site.siteModelId;
+        siteModelIdText.text = mySiteData.siteModelId;
+
 
         actionButton.onClick.AddListener(OnActionBtnClick);
         // Immediately check if the model is download by getting it's download size
@@ -49,7 +52,7 @@ public class SiteUIItem : MonoBehaviour
     private void CheckDownloadStatus()
     {
         Debug.Log($"[SiteUIItem/CheckDownloadStatus()] Checking download status...");
-        Addressables.GetDownloadSizeAsync(siteModelId).Completed += (downloadSizeHandle) =>
+        Addressables.GetDownloadSizeAsync(mySiteData.siteModelId).Completed += (downloadSizeHandle) =>
         {
             if (downloadSizeHandle.Status == AsyncOperationStatus.Succeeded)
             {
@@ -88,10 +91,8 @@ public class SiteUIItem : MonoBehaviour
     private void OnActionBtnClick()
     {
         // If the download size is > 0 then download the site model else enter the AR view of the site
-        if (downloadSizeInBytes > 0)
-            StartDownload();
-        else
-            EnterARView();
+        if (downloadSizeInBytes > 0) StartDownload();
+        else EnterARView();
     }
 
     /// <summary>
@@ -101,7 +102,7 @@ public class SiteUIItem : MonoBehaviour
     {
         AREvents.OnLoadingStatusChanged(true, "Downloading site...");
         // Download the model
-        Addressables.DownloadDependenciesAsync(siteModelId).Completed += (downloadDependenciesHandle) =>
+        Addressables.DownloadDependenciesAsync(mySiteData.siteModelId).Completed += (downloadDependenciesHandle) =>
         {
             if (downloadDependenciesHandle.Status == AsyncOperationStatus.Succeeded)
             {
@@ -121,6 +122,6 @@ public class SiteUIItem : MonoBehaviour
     /// </summary>
     private void EnterARView()
     {
-        AREvents.OnSiteSelected.Invoke(siteId, siteModelId);
+        ActiveSiteContext.Instance.SelectSite(mySiteData);
     }
 }

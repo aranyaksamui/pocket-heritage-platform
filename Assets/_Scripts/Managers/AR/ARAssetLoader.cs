@@ -14,19 +14,24 @@ public class ARAssetLoader : MonoBehaviour
 
     private void OnEnable()
     {
-        AREvents.OnSiteSelected += HandleSiteSelection;
+        AREvents.OnSiteSelection += HandleSiteSelection;
+        AREvents.OnContextCleared += CleanUpLoadedAsset;
     }
 
     private void OnDisable()
     {
-        AREvents.OnSiteSelected -= HandleSiteSelection;
+        AREvents.OnSiteSelection -= HandleSiteSelection;
+        AREvents.OnContextCleared -= CleanUpLoadedAsset;
     }
 
     // Handle site selection from Main Menu    
-    private void HandleSiteSelection(string siteId, string siteModelId)
+    private void HandleSiteSelection(SiteInfo newSite)
     {
+        // Clean up any previous loaded assets from the scene
+        CleanUpLoadedAsset();
         // Set the selected site model id
-        assetAddress = siteModelId;
+        assetAddress = newSite.siteModelId;
+        Debug.Log($"[ARAssetLoader/HandleSiteSelection()] Site selected: {assetAddress}");
     }
 
     /// <summary>
@@ -54,8 +59,8 @@ public class ARAssetLoader : MonoBehaviour
             Debug.Log($"[ARAssetLoader/OnAssetLoaded()] Asset successfully loaded");
             // Get the loaded asset object and store it for future references
             loadedAssetObject = handle.Result;
-            // Notify the subscribers in event bus (AREvents)
-            AREvents.OnObjectPlaced.Invoke(loadedAssetObject);
+            ActiveSiteContext.Instance.SetSiteObject(loadedAssetObject);
+            AREvents.OnObjectPlaced.Invoke(ActiveSiteContext.Instance.CurrentSiteObject);
         }
         else
         {
@@ -71,6 +76,19 @@ public class ARAssetLoader : MonoBehaviour
         if (loadedAssetObject != null)
         {
             Addressables.ReleaseInstance(loadedAssetObject);
+            loadedAssetObject = null;
+            Debug.Log("[ARAssetLoader/CleanUpLoadedAsset()] Cleaned up previous asset");
         }
+    }
+
+    /// <summary>
+    ///     Clean addressbales cache in Unity Editor.
+    /// </summary>
+    [ContextMenu("Clear Cache")]
+    public void ClearAddressableCache()
+    {
+        bool success = Caching.ClearCache();
+        if (success) Debug.Log("[ARAssetLoader/ClearAddressableCache()] Addressables cache cleared! Needs to be redownloaded in the next play.");
+        else Debug.Log("[ARAssetLoader/ClearAddressableCache()] Cache clear failed!");
     }
 }
