@@ -6,6 +6,8 @@
 ## 📖 Overview
 Pocket Heritage is an Augmented Reality (AR) platform designed to preserve and visualize India's cultural heritage. The application allows users to place high-fidelity 3D models of heritage sites (like the *Rani Ki Vav* stepwell and the *Taj Mahal*) into the real world.
 
+[Tech Demo](https://www.linkedin.com/posts/aranyaksamui_systemdesign-softwarearchitecture-unity3d-activity-7463603604944347136-RYsN)
+
 Key features include:
 * **Dynamic Dashboard:** A cloud-driven main menu allowing users to browse available heritage sites.
 *   **On-Demand Content (DLC):** Hybrid asset system supporting both pre-installed models and over-the-air downloads for new sites to save device storage.
