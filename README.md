@@ -1,6 +1,7 @@
 # 🏛️ Pocket Heritage AR Platform (WIP)
 
-> **Status:** 🚧 In Development (Prototyping Phase)  
+> **Status:** 🚧 In Development (Prototyping Phase)
+> **SIH 2025** College Level Selection
 > **Tech Stack:** Unity 2022+, AR Foundation, Addressables, Firebase Firestore + Netlify
 
 ## 📖 Overview
