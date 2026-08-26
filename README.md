@@ -1,8 +1,8 @@
 # 🏛️ Pocket Heritage AR Platform (WIP)
 
-> **Status:** 🚧 In Development (Prototyping Phase)
-> **SIH 2025** College Level Selection
-> **Tech Stack:** Unity 2022+, AR Foundation, Addressables, Firebase Firestore + Netlify
+> ***SIH 2025 Submission** College Level Selection*
+
+> **Post Competition Status:** 🚧 In Development (Prototyping Phase)<br>**Tech Stack:** Unity 2022+, AR Foundation, Addressables, Firebase Firestore + Netlify
 
 ## 📖 Overview
 Pocket Heritage is an Augmented Reality (AR) platform designed to preserve and visualize India's cultural heritage. The application allows users to place high-fidelity 3D models of heritage sites (like the *Rani Ki Vav* stepwell and the *Taj Mahal*) into the real world.
